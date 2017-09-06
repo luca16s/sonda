@@ -53,7 +53,7 @@ namespace sonda
             return (X, Y, position);
         }
 
-        public void South(string position, string x, string y, string directionToGo)
+        public (int, int, string) South(string position, string x, string y, string directionToGo)
         {
             if (position == "S")
             {
@@ -91,53 +91,12 @@ namespace sonda
                         }
                     }
                 }
+                return (X, Y, position);
             }
+            return (X, Y, position);
         }
 
-        public void West(string position, string x, string y, string directionToGo)
-        {
-            if (position == "R")
-            {
-                for (var i = 0; i < directionToGo.Length; i++)
-                {
-                    switch (directionToGo.Substring(i, 1))
-                    {
-                        case "R":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) - 1;
-                            Direction("R");
-                            break;
-                        }
-                        case "L":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) + 1;
-                            Direction("L");
-                            break;
-                        }
-                        case "M":
-                        {
-                            X = Convert.ToInt32(x) + 1;
-                            Y = Convert.ToInt32(y);
-                            if (position == "NLLLL")
-                            {
-                                Direction("N");
-                            }
-                            else
-                            {
-                                position = position == "NRRRR"
-                                    ? Direction("S")
-                                    : Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        public void East(string position, string x, string y, string directionToGo)
+        public (int, int, string) West(string position, string x, string y, string directionToGo)
         {
             if (position == "E")
             {
@@ -169,13 +128,60 @@ namespace sonda
                             }
                             else
                             {
+                                position = position == "NRRRR"
+                                    ? Direction("S")
+                                    : Direction(position.Substring(position.Length - 1, 1));
+                            }
+                            break;
+                        }
+                    }
+                }
+                return (X, Y, position);
+            }
+            return (X, Y, position);
+        }
+
+        public (int, int, string) East(string position, string x, string y, string directionToGo)
+        {
+            if (position == "R")
+            {
+                for (var i = 0; i < directionToGo.Length; i++)
+                {
+                    switch (directionToGo.Substring(i, 1))
+                    {
+                        case "R":
+                        {
+                            X = Convert.ToInt32(x);
+                            Y = Convert.ToInt32(y) - 1;
+                            Direction("R");
+                            break;
+                        }
+                        case "L":
+                        {
+                            X = Convert.ToInt32(x);
+                            Y = Convert.ToInt32(y) + 1;
+                            Direction("L");
+                            break;
+                        }
+                        case "M":
+                        {
+                            X = Convert.ToInt32(x) + 1;
+                            Y = Convert.ToInt32(y);
+                            if (position == "NLLLL")
+                            {
+                                Direction("N");
+                            }
+                            else
+                            {
                                 position = position == "NRRRR" ? Direction("S") : Direction(position.Substring(position.Length - 1, 1));
                             }
                             break;
                         }
                     }
                 }
+                return (X, Y, position);
             }
+            return (X, Y, position);
         }
 
     }
