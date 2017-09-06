@@ -29,13 +29,16 @@ namespace ProjetoDePouso
             initialPosition.Add(Console.ReadLine().ToUpper());
             initialPosition.Add(Console.ReadLine().ToUpper());
 
+            x.Add(initialPosition[0].Substring(0, 1));
+            y.Add(initialPosition[0].Substring(1, 1));
+            x.Add(initialPosition[1].Substring(0, 1));
+            y.Add(initialPosition[1].Substring(1, 1));
+
+            position.Add(initialPosition[0].Substring(2, 1));
+            position.Add(initialPosition[1].Substring(2, 1));
             int i;
             for (i = 0; i < 2; i++)
             {
-                x.Add(initialPosition[i].Substring(0, 1));
-                y.Add(initialPosition[i].Substring(1, 1));
-                position.Add(initialPosition[i].Substring(2, 1));
-
                 if (Convert.ToInt32(x[i]) > Convert.ToInt32(plateuSize.Substring(0, 1)) ||
                     Convert.ToInt32(y[i]) > Convert.ToInt32(plateuSize.Substring(1, 1)))
                 {
@@ -44,21 +47,16 @@ namespace ProjetoDePouso
                         "Reinsira a posição inicial, a mesma não pode ser maior que o tamanho do planalto: ");
                     initialPosition.Add(Console.ReadLine().ToUpper());
                 }
-                else
-                {
-                    if (initialPosition.Count == 2)
-                    {
-                        Console.WriteLine("Insira a direção para movimentar a sonda");
-                        for (i = 0; i < 2; i++)
-                        {
-                            direction.Add(Console.ReadLine().ToUpper());
-                        }
-                    }
-                }
+            }
+
+            if (initialPosition.Count == 2)
+            {
+                Console.WriteLine("Insira a direção para movimentar a sonda");
+                direction.Add(Console.ReadLine().ToUpper());
+                direction.Add(Console.ReadLine().ToUpper());
             }
             valueSondaA = ImpressaoAsync(valueSondaA, sondaA, position, x, y, direction, 0).Result;
             valueSondaB = ImpressaoAsync(valueSondaB, sondaB, position, x, y, direction, 1).Result;
-
             Console.WriteLine("A posição da sonda passou a ser:");
             Console.WriteLine($"{valueSondaA.Item1} {valueSondaA.Item2} {valueSondaA.Item3}");
             Console.WriteLine($"{valueSondaB.Item1} {valueSondaB.Item2} {valueSondaB.Item3}");
