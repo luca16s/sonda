@@ -16,154 +16,18 @@ namespace ProjetoDePouso
             Console.WriteLine("Insira a direção para movimentar a sonda");
             var direction = Console.ReadLine().ToUpper();
 
-            var x = 0;
-            var y = 0;
+            
             IMovementable movement = new Sonda();
+            var x = initialPosition.Substring(0, 1);
+            var y = initialPosition.Substring(1, 1);
             var position = initialPosition.Substring(2, 1);
+            (int, int, string) value;
+            value = movement.North(position, x, y, direction);
+            movement.South(position, x, y, direction);
+            movement.East(position, x, y, direction);
+            movement.West(position, x, y, direction);
 
-
-            if (initialPosition.Substring(2, 1) == "N")
-                for (var i = 0; i < direction.Length; i++)
-                {
-                    switch (direction.Substring(i, 1))
-                    {
-                        case "R":
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            movement.Direction("R");
-                            break;
-                        case "L":
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            movement.Direction("L");
-                            break;
-                        case "M":
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
-                            if (position == "NLLLL")
-                            {
-                                movement.Direction("N"); ;
-                            }
-                            else
-                            {
-                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                    }
-                }
-            else if (initialPosition.Substring(2, 1) == "S")
-            {
-                for (var i = 0; i < direction.Length; i++)
-                {
-                    switch (direction.Substring(i, 1))
-                    {
-                        case "R":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            movement.Direction("R");
-                                break;
-                        }
-                        case "L":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            movement.Direction("L");
-                                break;
-                        }
-                        case "M":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
-                            if (position == "NLLLL")
-                            {
-                                movement.Direction("N");
-                            }
-                            else
-                            {
-                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (initialPosition.Substring(2, 1) == "E")
-            {
-                for (var i = 0; i < direction.Length; i++)
-                {
-                    switch (direction.Substring(i, 1))
-                    {
-                        case "R":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
-                            movement.Direction("R");
-                                break;
-                        }
-                        case "L":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
-                            movement.Direction("L");
-                                break;
-                        }
-                        case "M":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            if (position == "NLLLL")
-                            {
-                                movement.Direction("N");
-                                }
-                            else
-                            {
-                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (initialPosition.Substring(2, 1) == "R")
-            {
-                for (var i = 0; i < direction.Length; i++)
-                {
-                    switch (direction.Substring(i, 1))
-                    {
-                        case "R":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
-                            movement.Direction("R");
-                                break;
-                        }
-                        case "L":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
-                            movement.Direction("L");
-                                break;
-                        }
-                        case "M":
-                        {
-                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
-                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            if (position == "NLLLL")
-                            {
-                                movement.Direction("N");
-                            }
-                            else
-                            {
-                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-
-            Console.WriteLine($"{x} - {y} - {position}");
+            Console.WriteLine($"{value.Item1} {value.Item2} {value.Item3}");
             Console.ReadLine();
         }
     }
