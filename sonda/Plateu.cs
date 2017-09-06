@@ -6,9 +6,9 @@ namespace sonda
 {
     public class Plateu
     {
-        private int X { get; }
-        private int Y { get; }
-        int[,] matrizPlateu;
+        public int X { get; }
+        public int Y { get; }
+        public int[,] matrizPlateu;
 
         public Plateu(string plateuSize)
         {

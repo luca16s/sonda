@@ -4,7 +4,7 @@ using System.Text;
 
 namespace sonda
 {
-    public class Sonda
+    public class Sonda: IMovementable
     {
         public Sonda()
         {
@@ -15,24 +15,33 @@ namespace sonda
             XPosition = Convert.ToInt32(initialValues.Substring(0, 1));
             YPosition = Convert.ToInt32(initialValues.Substring(1, 1));
             Position = Convert.ToChar(initialValues.Substring(2, 1));
+            
         }
 
         public int XPosition
         {
             get;
-            set;
         }
 
         public int YPosition
         {
             get;
-            set;
         }
 
         public char Position
         {
             get;
-            set;
+        }
+
+        public int plateuSize
+        {
+            get;
+        }
+
+
+        public void Calculo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

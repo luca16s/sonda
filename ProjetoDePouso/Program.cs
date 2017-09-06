@@ -11,22 +11,133 @@ namespace ProjetoDePouso
             var plateuSize = Console.ReadLine();
 
             Console.WriteLine("Insira a posição inicial: ");
-            var initialPosition = Console.ReadLine();
+            var initialPosition = Console.ReadLine().ToUpper();
 
             Console.WriteLine("Insira a direção para movimentar a sonda");
-            var direction = Console.ReadLine();
+            var direction = Console.ReadLine().ToUpper();
 
-            
-            Console.ReadLine();
+            var x = 0;
+            var y = 0;
+            string[] position = new string[direction.Length];
 
-            var sonda = new Sonda(initialPosition);
-            var plateu = new Plateu(plateuSize);
-
-            var sondaYPosition = sonda.YPosition;
-            var sondaXPosition = sonda.XPosition;
-            var sondaPosition = sonda.Position;
-            Console.WriteLine($"Size: {sondaXPosition} {sondaYPosition} {sondaPosition}");
-
+            if (initialPosition.Substring(2, 1) == "N")
+            {
+                for (var i = 0; i < direction.Length; i++)
+                {
+                    switch (direction.Substring(i, 1))
+                    {
+                        case "RM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            position[i] = "R";
+                            break;
+                        }
+                        case "LM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            position[i] = "L";
+                                break;
+                        }
+                        case "M":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
+                            position[i] = position[i - 1];
+                                break;
+                        }
+                    }
+                }
+            }
+            if (initialPosition.Substring(2, 1) == "S")
+            {
+                for (var i = 0; i < direction.Length; i++)
+                {
+                    switch (direction.Substring(i, 1))
+                    {
+                        case "RM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            position[i] = "R";
+                                break;
+                        }
+                        case "LM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            position[i] = "R";
+                                break;
+                        }
+                        case "M":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (initialPosition.Substring(2, 1) == "E")
+            {
+                for (var i = 0; i < direction.Length; i++)
+                {
+                    switch (direction.Substring(i, 1))
+                    {
+                        case "RM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
+                            position[i] = "R";
+                                break;
+                        }
+                        case "LM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
+                            position[i] = "R";
+                                break;
+                        }
+                        case "M":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            break;
+                        }
+                    }
+                }
+            }
+            if (initialPosition.Substring(2, 1) == "R")
+            {
+                for (var i = 0; i < direction.Length; i++)
+                {
+                    switch (direction.Substring(i, 1))
+                    {
+                        case "RM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
+                            position[i] = "R";
+                                break;
+                        }
+                        case "LM":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1));
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
+                            position[i] = "R";
+                                break;
+                        }
+                        case "M":
+                        {
+                            x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
+                            y = Convert.ToInt32(initialPosition.Substring(1, 1));
+                            break;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine($"{x} - {y} - {position[1]}");
             Console.ReadLine();
         }
     }
