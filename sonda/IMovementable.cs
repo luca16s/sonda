@@ -4,8 +4,8 @@ using System.Text;
 
 namespace sonda
 {
-    interface IMovementable
+    public interface IMovementable
     {
-        
+        string Direction(string position);
     }
 }

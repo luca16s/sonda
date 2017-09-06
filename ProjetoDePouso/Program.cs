@@ -18,7 +18,9 @@ namespace ProjetoDePouso
 
             var x = 0;
             var y = 0;
+            IMovementable movement = new Sonda();
             var position = initialPosition.Substring(2, 1);
+
 
             if (initialPosition.Substring(2, 1) == "N")
                 for (var i = 0; i < direction.Length; i++)
@@ -28,23 +30,23 @@ namespace ProjetoDePouso
                         case "R":
                             x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            position = position + "R";
+                            movement.Direction("R");
                             break;
                         case "L":
                             x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            position = position + "L";
+                            movement.Direction("L");
                             break;
                         case "M":
                             x = Convert.ToInt32(initialPosition.Substring(0, 1));
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
                             if (position == "NLLLL")
                             {
-                                position = "N";
+                                movement.Direction("N"); ;
                             }
                             else
                             {
-                                position = position == "NRRRR" ? "S" : position.Substring(position.Length - 1, 1);
+                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
                             }
                             break;
                     }
@@ -59,15 +61,15 @@ namespace ProjetoDePouso
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1)) + 1;
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            position = "R";
-                            break;
+                            movement.Direction("R");
+                                break;
                         }
                         case "L":
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1)) - 1;
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
-                            position = "L";
-                            break;
+                            movement.Direction("L");
+                                break;
                         }
                         case "M":
                         {
@@ -75,11 +77,11 @@ namespace ProjetoDePouso
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
                             if (position == "NLLLL")
                             {
-                                position = "N";
+                                movement.Direction("N");
                             }
                             else
                             {
-                                position = position == "NRRRR" ? "S" : position.Substring(position.Length - 1, 1);
+                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
                             }
                             break;
                         }
@@ -96,19 +98,15 @@ namespace ProjetoDePouso
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1));
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
-                            if (position.Contains("RR"))
-                                y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 2;
-                            position = "R";
-                            break;
+                            movement.Direction("R");
+                                break;
                         }
                         case "L":
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1));
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
-                            if (position.Contains("LL"))
-                                y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 2;
-                            position = "L";
-                            break;
+                            movement.Direction("L");
+                                break;
                         }
                         case "M":
                         {
@@ -116,11 +114,11 @@ namespace ProjetoDePouso
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
                             if (position == "NLLLL")
                             {
-                                position = "N";
-                            }
+                                movement.Direction("N");
+                                }
                             else
                             {
-                                position = position == "NRRRR" ? "S" : position.Substring(position.Length - 1, 1);
+                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
                             }
                             break;
                         }
@@ -137,15 +135,15 @@ namespace ProjetoDePouso
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1));
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) - 1;
-                            position = "R";
-                            break;
+                            movement.Direction("R");
+                                break;
                         }
                         case "L":
                         {
                             x = Convert.ToInt32(initialPosition.Substring(0, 1));
                             y = Convert.ToInt32(initialPosition.Substring(1, 1)) + 1;
-                            position = "L";
-                            break;
+                            movement.Direction("L");
+                                break;
                         }
                         case "M":
                         {
@@ -153,11 +151,11 @@ namespace ProjetoDePouso
                             y = Convert.ToInt32(initialPosition.Substring(1, 1));
                             if (position == "NLLLL")
                             {
-                                position = "N";
+                                movement.Direction("N");
                             }
                             else
                             {
-                                position = position == "NRRRR" ? "S" : position.Substring(position.Length - 1, 1);
+                                position = position == "NRRRR" ? movement.Direction("S") : movement.Direction(position.Substring(position.Length - 1, 1));
                             }
                             break;
                         }
