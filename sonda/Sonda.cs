@@ -2,7 +2,7 @@
 
 namespace sonda
 {
-    public class Sonda: IMovementable
+    public class Sonda : IMovementable
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -60,33 +60,33 @@ namespace sonda
                     switch (directionToGo.Substring(i, 1))
                     {
                         case "R":
-                        {
-                            X = Convert.ToInt32(x) + 1;
-                            Y = Convert.ToInt32(y);
-                            Direction("R");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x) + 1;
+                                Y = Convert.ToInt32(y);
+                                Direction("R");
+                                break;
+                            }
                         case "L":
-                        {
-                            X = Convert.ToInt32(x) - 1;
-                            Y = Convert.ToInt32(y);
-                            Direction("L");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x) - 1;
+                                Y = Convert.ToInt32(y);
+                                Direction("L");
+                                break;
+                            }
                         case "M":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) - 1;
-                            if (position == "NLLLL")
                             {
-                                Direction("N");
+                                X = Convert.ToInt32(x);
+                                Y = Convert.ToInt32(y) - 1;
+                                if (position == "NLLLL")
+                                {
+                                    Direction("N");
+                                }
+                                else
+                                {
+                                    position = position == "NRRRR" ? Direction("S") : Direction(position.Substring(position.Length - 1, 1));
+                                }
+                                break;
                             }
-                            else
-                            {
-                                position = position == "NRRRR" ? Direction("S") : Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
                     }
                 }
                 return (X, Y, position);
@@ -103,35 +103,35 @@ namespace sonda
                     switch (directionToGo.Substring(i, 1))
                     {
                         case "R":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) + 1;
-                            Direction("R");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x);
+                                Y = Convert.ToInt32(y) + 1;
+                                Direction("R");
+                                break;
+                            }
                         case "L":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) - 1;
-                            Direction("L");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x);
+                                Y = Convert.ToInt32(y) - 1;
+                                Direction("L");
+                                break;
+                            }
                         case "M":
-                        {
-                            X = Convert.ToInt32(x) - 1;
-                            Y = Convert.ToInt32(y);
-                            if (position == "NLLLL")
                             {
-                                Direction("N");
+                                X = Convert.ToInt32(x) - 1;
+                                Y = Convert.ToInt32(y);
+                                if (position == "NLLLL")
+                                {
+                                    Direction("N");
+                                }
+                                else
+                                {
+                                    position = position == "NRRRR"
+                                        ? Direction("S")
+                                        : Direction(position.Substring(position.Length - 1, 1));
+                                }
+                                break;
                             }
-                            else
-                            {
-                                position = position == "NRRRR"
-                                    ? Direction("S")
-                                    : Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
                     }
                 }
                 return (X, Y, position);
@@ -148,33 +148,33 @@ namespace sonda
                     switch (directionToGo.Substring(i, 1))
                     {
                         case "R":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) - 2;
-                            Direction("R");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x);
+                                Y = Convert.ToInt32(y) - 2;
+                                Direction("R");
+                                break;
+                            }
                         case "L":
-                        {
-                            X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) + 1;
-                            Direction("L");
-                            break;
-                        }
+                            {
+                                X = Convert.ToInt32(x);
+                                Y = Convert.ToInt32(y) + 1;
+                                Direction("L");
+                                break;
+                            }
                         case "M":
-                        {
-                            X = Convert.ToInt32(x) + 1;
-                            Y = Convert.ToInt32(y);
-                            if (position == "NLLLL")
                             {
-                                Direction("N");
+                                X = Convert.ToInt32(x) + 1;
+                                Y = Convert.ToInt32(y);
+                                if (position == "NLLLL")
+                                {
+                                    Direction("N");
+                                }
+                                else
+                                {
+                                    position = position == "NRRRR" ? Direction("S") : Direction(position.Substring(position.Length - 1, 1));
+                                }
+                                break;
                             }
-                            else
-                            {
-                                position = position == "NRRRR" ? Direction("S") : Direction(position.Substring(position.Length - 1, 1));
-                            }
-                            break;
-                        }
                     }
                 }
                 return (X, Y, position);
