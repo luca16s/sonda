@@ -28,18 +28,7 @@ namespace ProjetoDePouso
             Console.WriteLine("Insira a posição inicial das sondas: ");
             initialPosition.Add(Console.ReadLine().ToUpper());
             initialPosition.Add(Console.ReadLine().ToUpper());
-
-            if (initialPosition.Count != 3)
-            {
-                initialPosition.RemoveRange(0, 1);
-                initialPosition.Add(Console.ReadLine().ToUpper());
-            }
-            if (initialPosition.Count != 3)
-            {
-                initialPosition.RemoveRange(1, 1);
-                initialPosition.Add(Console.ReadLine().ToUpper());
-            }
-
+            
             x.Add(initialPosition[0].Substring(0, 1));
             y.Add(initialPosition[0].Substring(1, 1));
             x.Add(initialPosition[1].Substring(0, 1));
