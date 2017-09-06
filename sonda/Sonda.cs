@@ -98,7 +98,7 @@ namespace sonda
 
         public (int, int, string) West(string position, string x, string y, string directionToGo)
         {
-            if (position == "E")
+            if (position == "W")
             {
                 for (var i = 0; i < directionToGo.Length; i++)
                 {
@@ -143,7 +143,7 @@ namespace sonda
 
         public (int, int, string) East(string position, string x, string y, string directionToGo)
         {
-            if (position == "R")
+            if (position == "E")
             {
                 for (var i = 0; i < directionToGo.Length; i++)
                 {

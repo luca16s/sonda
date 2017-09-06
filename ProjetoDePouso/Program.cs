@@ -21,7 +21,9 @@ namespace ProjetoDePouso
             var x = initialPosition.Substring(0, 1);
             var y = initialPosition.Substring(1, 1);
             var position = initialPosition.Substring(2, 1);
+
             (int, int, string) value;
+
             value = movement.North(position, x, y, direction);
             value = movement.South(position, x, y, direction);
             value = movement.East(position, x, y, direction);
