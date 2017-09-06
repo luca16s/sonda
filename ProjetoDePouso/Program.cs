@@ -29,25 +29,41 @@ namespace ProjetoDePouso
             initialPosition.Add(Console.ReadLine().ToUpper());
             initialPosition.Add(Console.ReadLine().ToUpper());
 
+            if (initialPosition.Count != 3)
+            {
+                initialPosition.RemoveRange(0, 1);
+                initialPosition.Add(Console.ReadLine().ToUpper());
+            }
+            if (initialPosition.Count != 3)
+            {
+                initialPosition.RemoveRange(1, 1);
+                initialPosition.Add(Console.ReadLine().ToUpper());
+            }
+
             x.Add(initialPosition[0].Substring(0, 1));
             y.Add(initialPosition[0].Substring(1, 1));
             x.Add(initialPosition[1].Substring(0, 1));
             y.Add(initialPosition[1].Substring(1, 1));
 
+            if (Convert.ToInt32(x[0]) > Convert.ToInt32(plateuSize.Substring(0, 1)) ||
+                Convert.ToInt32(y[0]) > Convert.ToInt32(plateuSize.Substring(1, 1)))
+            {
+                initialPosition.RemoveRange(0, 1);
+                Console.WriteLine(
+                    "Reinsira a posição inicial, a mesma não pode ser maior que o tamanho do planalto: ");
+                initialPosition.Add(Console.ReadLine().ToUpper());
+            }
+            if (Convert.ToInt32(x[1]) > Convert.ToInt32(plateuSize.Substring(0, 1)) ||
+                Convert.ToInt32(y[1]) > Convert.ToInt32(plateuSize.Substring(1, 1)))
+            {
+                initialPosition.RemoveRange(1, 1);
+                Console.WriteLine(
+                    "Reinsira a posição inicial, a mesma não pode ser maior que o tamanho do planalto: ");
+                initialPosition.Add(Console.ReadLine().ToUpper());
+            }
+
             position.Add(initialPosition[0].Substring(2, 1));
             position.Add(initialPosition[1].Substring(2, 1));
-            int i;
-            for (i = 0; i < 2; i++)
-            {
-                if (Convert.ToInt32(x[i]) > Convert.ToInt32(plateuSize.Substring(0, 1)) ||
-                    Convert.ToInt32(y[i]) > Convert.ToInt32(plateuSize.Substring(1, 1)))
-                {
-                    initialPosition.RemoveRange(i, 1);
-                    Console.WriteLine(
-                        "Reinsira a posição inicial, a mesma não pode ser maior que o tamanho do planalto: ");
-                    initialPosition.Add(Console.ReadLine().ToUpper());
-                }
-            }
 
             if (initialPosition.Count == 2)
             {
@@ -75,8 +91,8 @@ namespace ProjetoDePouso
         private static async Task<(int, int, string)> ImpressaoAsync((int, int, string) valueSonda, IMovementable sonda,
             List<string> position, List<string> x, List<string> y, List<string> direction, int controller)
         {
-            var  value = await Task.Run(() => MostraPosicao(valueSonda, sonda, position, x, y, direction, controller));
-            return value; 
-        } 
+            var value = await Task.Run(() => MostraPosicao(valueSonda, sonda, position, x, y, direction, controller));
+            return value;
+        }
     }
 }
