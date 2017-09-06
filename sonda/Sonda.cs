@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace sonda
 {
@@ -152,7 +150,7 @@ namespace sonda
                         case "R":
                         {
                             X = Convert.ToInt32(x);
-                            Y = Convert.ToInt32(y) - 1;
+                            Y = Convert.ToInt32(y) - 2;
                             Direction("R");
                             break;
                         }
