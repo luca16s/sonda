@@ -1,23 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace sonda
 {
     public class Sonda
     {
-        public Sonda(int yCoordinate, char direction, int xCoordinate)
+        public Sonda()
         {
-            this._yCoordinate = yCoordinate;
-            this._direction = direction;
-            this._xCoordinate = xCoordinate;
         }
 
-        private readonly int _xCoordinate;
-        public int XCoordinate { get; set; }
+        public Sonda(string initialValues)
+        {
+            XPosition = Convert.ToInt32(initialValues.Substring(0, 1));
+            YPosition = Convert.ToInt32(initialValues.Substring(1, 1));
+            Position = Convert.ToChar(initialValues.Substring(2, 1));
+        }
 
-        private readonly int _yCoordinate;
-        private int YCoordinate { get; set; }
+        public int XPosition
+        {
+            get;
+            set;
+        }
 
-        private readonly char _direction;
-        private char Direction { get; set; }
+        public int YPosition
+        {
+            get;
+            set;
+        }
+
+        public char Position
+        {
+            get;
+            set;
+        }
     }
 }

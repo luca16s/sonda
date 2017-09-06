@@ -1,4 +1,5 @@
 ﻿using System;
+using sonda;
 
 namespace ProjetoDePouso
 {
@@ -7,13 +8,26 @@ namespace ProjetoDePouso
         private static void Main(string[] args)
         {
             Console.WriteLine("Insira as Coordenadas do Ponto Superior Direito: ");
-            string plateuSize = Console.ReadLine();
+            var plateuSize = Console.ReadLine();
 
             Console.WriteLine("Insira a posição inicial: ");
-            string initialPosition = Console.ReadLine();
+            var initialPosition = Console.ReadLine();
 
             Console.WriteLine("Insira a direção para movimentar a sonda");
-            string direction = Console.ReadLine();
+            var direction = Console.ReadLine();
+
+            
+            Console.ReadLine();
+
+            var sonda = new Sonda(initialPosition);
+            var plateu = new Plateu(plateuSize);
+
+            var sondaYPosition = sonda.YPosition;
+            var sondaXPosition = sonda.XPosition;
+            var sondaPosition = sonda.Position;
+            Console.WriteLine($"Size: {sondaXPosition} {sondaYPosition} {sondaPosition}");
+
+            Console.ReadLine();
         }
     }
 }
