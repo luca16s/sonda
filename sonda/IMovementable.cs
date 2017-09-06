@@ -6,6 +6,6 @@ namespace sonda
 {
     interface IMovementable
     {
-        void Calculo();
+        
     }
 }
